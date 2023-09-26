@@ -18,12 +18,25 @@
 
   <script>
     //JSON.parse converts to an object 
-    const score = JSON.parse(localStorage.getItem('score'));
+    let score = JSON.parse(localStorage.getItem('score'))||{
+      wins:0,
+      losses:0,
+      ties:0
+    };
+
+    /*if (!score){//score===null
+        score={
+        wins:0,
+        losses:0,
+        ties:0
+        }
+     }*/
 
       function resetScore() {
       score.wins = 0;
       score.losses = 0;
       score.ties = 0;
+      localStorage.removeItem('score');
     }
 
     function playGame(playerMove) {
