@@ -14,7 +14,8 @@
   <button onclick="playGame('Rock');">Rock</button>
   <button onclick="playGame('Paper');">Paper</button>
   <button onclick="playGame('Scissors');">Scissors</button>
-  <button onclick="resetScore();">Reset Score</button>
+  <p class="score" ></p>
+  <button onclick="resetScore(); updateScoreEl();">Reset Score</button>
 
   <script>
     //JSON.parse converts to an object 
@@ -31,8 +32,9 @@
         ties:0
         }
      }*/
-
-      function resetScore() {
+    updateScoreEl();      
+    
+    function resetScore() {
       score.wins = 0;
       score.losses = 0;
       score.ties = 0;
@@ -80,9 +82,15 @@
       }
       //jSON.srtingify converts to a string
       localStorage.setItem('score', JSON.stringify(score));
+      
+      updateScoreEl();
+      
+      //alert(`Computer pick ${computer} =>  ${result} \n Wins: ${score.wins}, Losses: ${score.losses}, Ties :${score.ties}`);
 
-      alert(`Computer pick ${computer} =>  ${result} \n Wins: ${score.wins}, Losses: ${score.losses}, Ties :${score.ties}`);
-
+    }
+    function updateScoreEl(){
+      document.querySelector('.score').innerHTML=`Wins: ${score.wins}, Losses: ${score.losses}, Ties :${score.ties}`
+      
     }
 
     function pickComputerMove() {
