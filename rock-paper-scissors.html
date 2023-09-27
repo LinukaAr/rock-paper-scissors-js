@@ -14,6 +14,8 @@
   <button onclick="playGame('Rock');">Rock</button>
   <button onclick="playGame('Paper');">Paper</button>
   <button onclick="playGame('Scissors');">Scissors</button>
+  <p class="result"></p>
+  <p class="moves"></p>
   <p class="score" ></p>
   <button onclick="resetScore(); updateScoreEl();">Reset Score</button>
 
@@ -32,7 +34,8 @@
         ties:0
         }
      }*/
-    updateScoreEl();      
+     
+     updateScoreEl();      
     
     function resetScore() {
       score.wins = 0;
@@ -85,6 +88,10 @@
       
       updateScoreEl();
       
+      document.querySelector('.result').innerHTML=` ${result}`;
+      document.querySelector('.moves').innerHTML=`Computer pick=> ${computer} `;
+
+      
       //alert(`Computer pick ${computer} =>  ${result} \n Wins: ${score.wins}, Losses: ${score.losses}, Ties :${score.ties}`);
 
     }
@@ -92,6 +99,8 @@
       document.querySelector('.score').innerHTML=`Wins: ${score.wins}, Losses: ${score.losses}, Ties :${score.ties}`
       
     }
+
+    
 
     function pickComputerMove() {
       const randomNumber = Math.random();
