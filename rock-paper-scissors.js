@@ -13,7 +13,7 @@
           }
        }*/
        
-       //updateScoreEl();      
+        updateScoreEl();      
       
       function resetScore() {
         score.wins = 0;
